@@ -1,39 +1,37 @@
-// This is a test harness for your module
-// You should do something interesting in this harness
-// to test out the module and to provide instructions
-// to users on how to use it by example.
-
-
-// open a single window
-var win = Ti.UI.createWindow({
-	backgroundColor:'white'
+var window = Titanium.UI.createWindow({
+    backgroundColor : '#262626',
+    theme : 'Theme.MyTheme'
 });
-var label = Ti.UI.createLabel();
-win.add(label);
-win.open();
 
-// TODO: write your module tests here
-var kenburnsview = require('ti.android.kenburnsview');
-Ti.API.info("module is => " + kenburnsview);
+var KenBurnsView = require('ti.android.kenburnsview');
 
-label.text = kenburnsview.example();
+var scrollView = Titanium.UI.createScrollView({
+    top : 0,
+    height : 1000,
+    layout : "vertical",
+    backgroundColor : "#FFF"
+});
+window.add(scrollView);
 
-Ti.API.info("module exampleProp is => " + kenburnsview.exampleProp);
-kenburnsview.exampleProp = "This is a test value";
+var kbView = KenBurnsView.createImageView({
+    top : 0,
+    left : 0,
+    right : 0,
+    height : 250,
+    interpolation : {
+        duration : 25000,
+        easing : KenBurnsView.EASE_IN  
+    },
+    image : "https://images3.alphacoders.com/823/thumb-1920-82317.jpg"
+});
+scrollView.add(kbView);
 
-if (Ti.Platform.name == "android") {
-	var proxy = kenburnsview.createExample({
-		message: "Creating an example Proxy",
-		backgroundColor: "red",
-		width: 100,
-		height: 100,
-		top: 100,
-		left: 150
-	});
+kbView.addEventListener(KenBurnsView.TRANSITION_STARTED, function(){
+    Titanium.API.info("TRANSITION_STARTED");
+});
 
-	proxy.printMessage("Hello world!");
-	proxy.message = "Hi world!.  It's me again.";
-	proxy.printMessage("Hello world!");
-	win.add(proxy);
-}
+kbView.addEventListener(KenBurnsView.TRANSITION_ENDED, function(){
+    Titanium.API.info("TRANSITION_ENDED");
+});
 
+window.open();

@@ -38,7 +38,7 @@ public class KenburnsviewModule extends KrollModule
 		Log.d(LCAT, "inside onAppCreate");
 		// put module init code that needs to run when the application is created
 	}
-
+	
 	//EVENTS
 	@Kroll.constant
     public static final String TRANSITION_ENDED = "1";
