@@ -1,4 +1,4 @@
-# Ti.Android.KevinBurnsView
+# Ti.Android.KenBurnsView
 
 Titanium Android library that provides access to [Flávio Faria](https://github.com/flavioarfaria) [KenBurnsView](https://github.com/flavioarfaria/KenBurnsView) library. It is an extension to *ImageView* that creates an immersive
 experience by animating its drawable using the [Ken Burns Effect](https://en.wikipedia.org/wiki/Ken_Burns_effect).
