@@ -48,13 +48,15 @@ window.open();
 
 # Methods
 Simple methods to control the view animation
-|Methods                |Description             |
-|----------------|-------------------------------|
-|pause			|Pauses the view animation                     
-|resume    		|Resumes the view animation     
+
+|Methods         |Description                  |
+|----------------|-----------------------------|
+|pause		 |Pauses the view animation    |                
+|resume    	 |Resumes the view animation   |  
 
 # Attributes
 Simple methods to control the view animation
+
 |attributes                |Description                          |
 |----------------|-------------------------------|
 |image			|Image resource (local or url)            
@@ -62,6 +64,7 @@ Simple methods to control the view animation
 
 ## transition
 the attributes **easing** and **customEasing** can not be used together. If so, **easing** will be ignored.
+
 |attributes                |Description         |
 |---------------|-------------------------------|
 |duration		|duration of animation in milliseconds       
@@ -69,6 +72,7 @@ the attributes **easing** and **customEasing** can not be used together. If so, 
 |customEasing	|Your own custom curve. A Object with **x1**, **x2**, **y1**, **y2**
 
 ## Easing curves
+
 |attributes      | 
 |----------------|
 |LINEAR			
