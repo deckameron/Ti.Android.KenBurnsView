@@ -58,7 +58,7 @@ Simple methods to control the view animation
 |attributes                |Description                          |
 |----------------|-------------------------------|
 |image			|Image resource (local or url)            
-|transition    	|An object with **duration**, **easing**  and customEasing**strong text**    
+|transition    	|An object with **duration** and (**easing** or **customEasing**)  
 
 ## transition
 |attributes                |Description                          |
