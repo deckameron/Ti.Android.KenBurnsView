@@ -10,8 +10,7 @@ experience by animating its drawable using the [Ken Burns Effect](https://en.wik
 var KenBurnsView = require('ti.android.kenburnsview');
 
 var window = Titanium.UI.createWindow({
-backgroundColor : '#262626',
-theme : 'Theme.MyTheme'
+	backgroundColor : '#262626',
 });
 
 var scrollView = Titanium.UI.createScrollView({
