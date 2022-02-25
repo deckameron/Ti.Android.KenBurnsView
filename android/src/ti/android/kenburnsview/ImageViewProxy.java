@@ -10,7 +10,6 @@ package ti.android.kenburnsview;
 
 import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.annotations.Kroll;
-import org.appcelerator.kroll.common.Log;
 import org.appcelerator.kroll.common.TiConfig;
 import org.appcelerator.kroll.common.TiMessenger;
 import org.appcelerator.titanium.TiApplication;
@@ -24,86 +23,46 @@ import android.content.Context;
 
 import com.bumptech.glide.Glide;
 
-// This proxy can be created by calling Kenburnsview.createImageView({message: "hello world"})
+// This proxy can be created by calling Kenburnsview.createImageView({image: "...", interpolation: "..."})
 
 @Kroll.proxy(creatableInModule=KenburnsviewModule.class, propertyAccessors = {
-	"interpolation", "image"
+        "interpolation", "image"
 })
 public class ImageViewProxy extends TiViewProxy
 {
-	// Standard Debugging variables
-	private static final String LCAT = "kenburnsview";
-	private static final boolean DBG = TiConfig.LOGD;
-	
-	private static final int MSG_FIRST_ID = TiViewProxy.MSG_LAST_ID + 1;
-	private static final int MSG_SET_IMAGE_URL = MSG_FIRST_ID+1001;
-	private static final int MSG_SET_IMAGE_BLOB = MSG_FIRST_ID+1002;
-	
-	Context context;
-	TiViewProxy static_proxy;
-	KrollDict props = new KrollDict();
-	
-	// Constructor
-	public ImageViewProxy()
-	{
-		super();
-	}
+    // Constructor
+    public ImageViewProxy() {
+        super();
+    }
 
-	@Override
-	public TiUIView createView(Activity activity)
-	{
-		TiUIView view = new KVView(this);
-		view.getLayoutParams().autoFillsHeight = true;
-		view.getLayoutParams().autoFillsWidth = true;
-		return view;
-	}
+    @Override
+    public TiUIView createView(Activity activity) {
+        TiUIView view = new KVView(this);
+        view.getLayoutParams().autoFillsHeight = true;
+        view.getLayoutParams().autoFillsWidth = true;
+        return view;
+    }
 
-	// Handle creation options
-	@Override
-	public void handleCreationDict(KrollDict options)
-	{
-		super.handleCreationDict(options);
+    protected KVView getView() {
+        return (KVView) getOrCreateView();
+    }
 
-		if (options.containsKey("message")) {
-			Log.d(LCAT, "example created with message: " + options.get("message"));
-		}
-	}
-	
-	protected KVView getView() {
-		return (KVView)getOrCreateView();
-	}
+    // Handle creation options
+    @Override
+    public void handleCreationDict(KrollDict options) {
+        super.handleCreationDict(options);
+    }
 
-	// Methods
-	@Kroll.method
-	public void pause()
-	{
-		getView().pause();
-	}
-	
-	@Kroll.method
-	public void resume()
-	{
-		getView().resume();
-	}
-	
-	@Kroll.setProperty
-	@Kroll.method
-	public void setImage(final Object uri) {
-		if (TiApplication.isUIThread()) {
-			
-			Context c = TiApplication.getAppCurrentActivity().getBaseContext();
-			
-			if (uri instanceof String){
-				Glide.with(c).load(uri).into(getView().getKVView());
-			}else{
-				TiDrawableReference drawableReference = TiDrawableReference.fromBlob(TiApplication.getAppCurrentActivity(), TiConvert.toBlob(uri));
-				Glide.with(c).load(drawableReference).into(getView().getKVView());
-			}
-		} else {
-			if (uri instanceof String)
-				TiMessenger.sendBlockingMainMessage(getMainHandler().obtainMessage(MSG_SET_IMAGE_URL), uri.toString());
-			else
-				TiMessenger.sendBlockingMainMessage(getMainHandler().obtainMessage(MSG_SET_IMAGE_BLOB), TiConvert.toBlob(uri));
-		}
-	}
+    // Methods
+    @Kroll.method
+    public void pause()
+    {
+        getView().pause();
+    }
+
+    @Kroll.method
+    public void resume()
+    {
+        getView().resume();
+    }
 }

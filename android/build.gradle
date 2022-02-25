@@ -1,0 +1,14 @@
+println "Running gradle version: $gradle.gradleVersion"
+
+repositories {
+    google()
+    maven { url 'https://jitpack.io' }
+    maven { url 'https://repo.jenkins-ci.org/public/' }
+    maven { url 'https://maven.google.com/' }
+}
+
+dependencies {
+	implementation 'com.flaviofaria:kenburnsview:1.0.7'
+	implementation 'com.github.bumptech.glide:glide:4.13.1'
+	implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
+}
