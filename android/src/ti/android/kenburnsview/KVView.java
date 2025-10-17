@@ -2,6 +2,7 @@ package ti.android.kenburnsview;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollPropertyChange;
@@ -22,7 +23,9 @@ import com.flaviofaria.kenburnsview.RandomTransitionGenerator;
 import com.flaviofaria.kenburnsview.Transition;
 import com.flaviofaria.kenburnsview.KenBurnsView.TransitionListener;
 
-public class KVView extends TiUIView{
+import ti.modules.titanium.ui.widget.TiUIImageView;
+
+public class KVView extends TiUIView {
 
     private static final String LCAT = "kenburnsview";
 
@@ -91,15 +94,16 @@ public class KVView extends TiUIView{
 
                     HashMap<?, ?> customEasing = (HashMap<?, ?>) interpolation.get("customEasing");
 
+                    assert customEasing != null;
                     if (customEasing.containsKey("x1") &&
                             customEasing.containsKey("x2") &&
                             customEasing.containsKey("y1") &&
                             customEasing.containsKey("y2")) {
 
-                        Float x1 = Float.parseFloat((String) customEasing.get("x1"));
-                        Float x2 = Float.parseFloat((String) customEasing.get("x2"));
-                        Float y1 = Float.parseFloat((String) customEasing.get("y1"));
-                        Float y2 = Float.parseFloat((String) customEasing.get("y2"));
+                        float x1 = Float.parseFloat((String) customEasing.get("x1"));
+                        float x2 = Float.parseFloat((String) customEasing.get("x2"));
+                        float y1 = Float.parseFloat((String) customEasing.get("y1"));
+                        float y2 = Float.parseFloat((String) customEasing.get("y2"));
 
                         customInterpolator = PathInterpolatorCompat.create(x1, x2, y1, y2);
                     }
@@ -216,7 +220,6 @@ public class KVView extends TiUIView{
     @Override
     public void propertyChanged(String key, Object oldValue, Object newValue, KrollProxy proxy) {
         super.propertyChanged(key, oldValue, newValue, proxy);
-
         this.applyPropertyChanges(key, newValue);
     }
 
