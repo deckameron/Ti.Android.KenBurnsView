@@ -4,32 +4,22 @@
  * Copyright (c) 2009-2017 by Appcelerator, Inc. All Rights Reserved.
  * Licensed under the terms of the Apache Public License
  * Please see the LICENSE included with this distribution for details.
- *
  */
 package ti.android.kenburnsview;
 
+import android.app.Activity;
+
 import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.annotations.Kroll;
-import org.appcelerator.kroll.common.TiConfig;
-import org.appcelerator.kroll.common.TiMessenger;
-import org.appcelerator.titanium.TiApplication;
 import org.appcelerator.titanium.proxy.TiViewProxy;
-import org.appcelerator.titanium.util.TiConvert;
-import org.appcelerator.titanium.view.TiDrawableReference;
 import org.appcelerator.titanium.view.TiUIView;
-
-import android.app.Activity;
-import android.content.Context;
-
-import com.bumptech.glide.Glide;
 
 // This proxy can be created by calling Kenburnsview.createImageView({image: "...", interpolation: "..."})
 
-@Kroll.proxy(creatableInModule=KenburnsviewModule.class, propertyAccessors = {
+@Kroll.proxy(creatableInModule = KenburnsviewModule.class, propertyAccessors = {
         "interpolation", "image"
 })
-public class ImageViewProxy extends TiViewProxy
-{
+public class ImageViewProxy extends TiViewProxy {
     // Constructor
     public ImageViewProxy() {
         super();
@@ -55,14 +45,12 @@ public class ImageViewProxy extends TiViewProxy
 
     // Methods
     @Kroll.method
-    public void pause()
-    {
+    public void pause() {
         getView().pause();
     }
 
     @Kroll.method
-    public void resume()
-    {
+    public void resume() {
         getView().resume();
     }
 }

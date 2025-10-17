@@ -4,131 +4,92 @@
  * Copyright (c) 2009-2017 by Appcelerator, Inc. All Rights Reserved.
  * Licensed under the terms of the Apache Public License
  * Please see the LICENSE included with this distribution for details.
- *
  */
 package ti.android.kenburnsview;
 
 import org.appcelerator.kroll.KrollModule;
 import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.titanium.TiApplication;
-import org.appcelerator.kroll.common.Log;
-import org.appcelerator.kroll.common.TiConfig;
 
 
-@Kroll.module(name="Kenburnsview", id="ti.android.kenburnsview")
-public class KenburnsviewModule extends KrollModule
-{
+@Kroll.module(name = "Kenburnsview", id = "ti.android.kenburnsview")
+public class KenburnsviewModule extends KrollModule {
 
-	// Standard Debugging variables
-	private static final String LCAT = "KenburnsviewModule";
+    //EVENTS
+    @Kroll.constant
+    public static final String TRANSITION_ENDED = "1";
 
-	// You can define constants with @Kroll.constant, for example:
-	// @Kroll.constant public static final String EXTERNAL_NAME = value;
+    // You can define constants with @Kroll.constant, for example:
+    // @Kroll.constant public static final String EXTERNAL_NAME = value;
+    @Kroll.constant
+    public static final String TRANSITION_STARTED = "2";
+    //TRANSFOMATIONS
+    @Kroll.constant
+    public static final int LINEAR = 0;
+    @Kroll.constant
+    public static final int EASE = 1;
+    @Kroll.constant
+    public static final int EASE_IN = 2;
+    @Kroll.constant
+    public static final int EASE_OUT = 3;
+    @Kroll.constant
+    public static final int EASE_IN_OUT = 4;
+    @Kroll.constant
+    public static final int EASE_IN_QUAD = 5;
+    @Kroll.constant
+    public static final int EASE_IN_CUBIC = 6;
+    @Kroll.constant
+    public static final int EASE_IN_QUART = 7;
+    @Kroll.constant
+    public static final int EASE_IN_QUINT = 8;
+    @Kroll.constant
+    public static final int EASE_IN_SINE = 9;
+    @Kroll.constant
+    public static final int EASE_IN_EXPO = 10;
+    @Kroll.constant
+    public static final int EASE_IN_CIRC = 11;
+    @Kroll.constant
+    public static final int EASE_IN_BACK = 12;
+    @Kroll.constant
+    public static final int EASE_OUT_QUAD = 13;
+    @Kroll.constant
+    public static final int EASE_OUT_CUBIC = 14;
+    @Kroll.constant
+    public static final int EASE_OUT_QUART = 15;
+    @Kroll.constant
+    public static final int EASE_OUT_QUINT = 16;
+    @Kroll.constant
+    public static final int EASE_OUT_SINE = 17;
+    @Kroll.constant
+    public static final int EASE_OUT_EXPO = 18;
+    @Kroll.constant
+    public static final int EASE_OUT_CIRC = 19;
+    @Kroll.constant
+    public static final int EASE_OUT_BACK = 20;
+    @Kroll.constant
+    public static final int EASE_IN_OUT_QUAD = 21;
+    @Kroll.constant
+    public static final int EASE_IN_OUT_CUBIC = 22;
+    @Kroll.constant
+    public static final int EASE_IN_OUT_QUART = 23;
+    @Kroll.constant
+    public static final int EASE_IN_OUT_QUINT = 24;
+    @Kroll.constant
+    public static final int EASE_IN_OUT_SINE = 25;
+    @Kroll.constant
+    public static final int EASE_IN_OUT_EXPO = 26;
+    @Kroll.constant
+    public static final int EASE_IN_OUT_CIRC = 27;
+    @Kroll.constant
+    public static final int EASE_IN_OUT_BACK = 28;
+    // Standard Debugging variables
+    private static final String LCAT = "KenburnsviewModule";
 
-	public KenburnsviewModule()
-	{
-		super();
-	}
+    public KenburnsviewModule() {
+        super();
+    }
 
-	@Kroll.onAppCreate
-	public static void onAppCreate(TiApplication app)
-	{
-		Log.d(LCAT, "inside onAppCreate");
-		// put module init code that needs to run when the application is created
-	}
-
-	//EVENTS
-	@Kroll.constant
-	public static final String TRANSITION_ENDED = "1";
-
-	@Kroll.constant
-	public static final String TRANSITION_STARTED = "2";
-
-	//TRANSFOMATIONS
-	@Kroll.constant
-	public static final int LINEAR = 0;
-
-	@Kroll.constant
-	public static final int EASE = 1;
-
-	@Kroll.constant
-	public static final int EASE_IN = 2;
-
-	@Kroll.constant
-	public static final int EASE_OUT = 3;
-
-	@Kroll.constant
-	public static final int EASE_IN_OUT = 4;
-
-	@Kroll.constant
-	public static final int EASE_IN_QUAD = 5;
-
-	@Kroll.constant
-	public static final int EASE_IN_CUBIC = 6;
-
-	@Kroll.constant
-	public static final int EASE_IN_QUART = 7;
-
-	@Kroll.constant
-	public static final int EASE_IN_QUINT = 8;
-
-	@Kroll.constant
-	public static final int EASE_IN_SINE = 9;
-
-	@Kroll.constant
-	public static final int EASE_IN_EXPO = 10;
-
-	@Kroll.constant
-	public static final int EASE_IN_CIRC = 11;
-
-	@Kroll.constant
-	public static final int EASE_IN_BACK = 12;
-
-	@Kroll.constant
-	public static final int EASE_OUT_QUAD = 13;
-
-	@Kroll.constant
-	public static final int EASE_OUT_CUBIC = 14;
-
-	@Kroll.constant
-	public static final int EASE_OUT_QUART = 15;
-
-	@Kroll.constant
-	public static final int EASE_OUT_QUINT = 16;
-
-	@Kroll.constant
-	public static final int EASE_OUT_SINE = 17;
-
-	@Kroll.constant
-	public static final int EASE_OUT_EXPO = 18;
-
-	@Kroll.constant
-	public static final int EASE_OUT_CIRC = 19;
-
-	@Kroll.constant
-	public static final int EASE_OUT_BACK = 20;
-
-	@Kroll.constant
-	public static final int EASE_IN_OUT_QUAD = 21;
-
-	@Kroll.constant
-	public static final int EASE_IN_OUT_CUBIC = 22;
-
-	@Kroll.constant
-	public static final int EASE_IN_OUT_QUART = 23;
-
-	@Kroll.constant
-	public static final int EASE_IN_OUT_QUINT = 24;
-
-	@Kroll.constant
-	public static final int EASE_IN_OUT_SINE = 25;
-
-	@Kroll.constant
-	public static final int EASE_IN_OUT_EXPO = 26;
-
-	@Kroll.constant
-	public static final int EASE_IN_OUT_CIRC = 27;
-
-	@Kroll.constant
-	public static final int EASE_IN_OUT_BACK = 28;
+    @Kroll.onAppCreate
+    public static void onAppCreate(TiApplication app) {
+    }
 }

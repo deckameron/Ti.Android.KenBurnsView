@@ -1,5 +1,6 @@
 package ti.android.kenburnsview;
 
+<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,8 @@ import org.appcelerator.titanium.proxy.TiViewProxy;
 import org.appcelerator.titanium.util.TiConvert;
 import org.appcelerator.titanium.view.TiUIView;
 
+=======
+>>>>>>> 1126cf6b1739a628df1f6a57db023113a42b8ea3
 import android.content.Context;
 import android.view.animation.Interpolator;
 
@@ -19,11 +22,24 @@ import androidx.core.view.animation.PathInterpolatorCompat;
 
 import com.bumptech.glide.Glide;
 import com.flaviofaria.kenburnsview.KenBurnsView;
+import com.flaviofaria.kenburnsview.KenBurnsView.TransitionListener;
 import com.flaviofaria.kenburnsview.RandomTransitionGenerator;
 import com.flaviofaria.kenburnsview.Transition;
-import com.flaviofaria.kenburnsview.KenBurnsView.TransitionListener;
 
+<<<<<<< HEAD
 import ti.modules.titanium.ui.widget.TiUIImageView;
+=======
+import org.appcelerator.kroll.KrollDict;
+import org.appcelerator.kroll.KrollPropertyChange;
+import org.appcelerator.kroll.KrollProxy;
+import org.appcelerator.kroll.common.Log;
+import org.appcelerator.titanium.proxy.TiViewProxy;
+import org.appcelerator.titanium.util.TiConvert;
+import org.appcelerator.titanium.view.TiUIView;
+
+import java.util.HashMap;
+import java.util.List;
+>>>>>>> 1126cf6b1739a628df1f6a57db023113a42b8ea3
 
 public class KVView extends TiUIView {
 
@@ -47,6 +63,7 @@ public class KVView extends TiUIView {
             public void onTransitionEnd(Transition transition) {
                 static_proxy.fireEvent(KenburnsviewModule.TRANSITION_ENDED, props);
             }
+
             @Override
             public void onTransitionStart(Transition transition) {
                 static_proxy.fireEvent(KenburnsviewModule.TRANSITION_STARTED, props);
@@ -57,8 +74,7 @@ public class KVView extends TiUIView {
     }
 
     @Override
-    public void processProperties(KrollDict d)
-    {
+    public void processProperties(KrollDict d) {
         super.processProperties(d);
 
         String[] properties = {
@@ -84,7 +100,7 @@ public class KVView extends TiUIView {
 
             HashMap<?, ?> interpolation = (HashMap<?, ?>) value;
 
-            if(interpolation.containsKey("duration")){
+            if (interpolation.containsKey("duration")) {
 
                 Integer duration = (Integer) interpolation.get("duration");
 
@@ -108,11 +124,11 @@ public class KVView extends TiUIView {
                         customInterpolator = PathInterpolatorCompat.create(x1, x2, y1, y2);
                     }
 
-                    if(interpolation.containsKey("easing")){
+                    if (interpolation.containsKey("easing")) {
                         Log.w(LCAT, "EASING value will be ignored, because you are also using CUSTOMEASING.");
                     }
 
-                }else if(interpolation.containsKey("easing")){
+                } else if (interpolation.containsKey("easing")) {
                     Integer easing = (Integer) interpolation.get("easing");
 
                     switch (easing) {
@@ -211,7 +227,7 @@ public class KVView extends TiUIView {
 
                 RandomTransitionGenerator generator = new RandomTransitionGenerator(duration, customInterpolator);
                 kview.setTransitionGenerator(generator);
-            }else{
+            } else {
                 Log.w(LCAT, "DURATION is required to use EASING and CUSTOMEASING. Using lib standard easing instead...");
             }
         }
@@ -231,17 +247,16 @@ public class KVView extends TiUIView {
     }
 
     // Methods
-    public void pause()
-    {
+    public void pause() {
         this.kview.pause();
     }
 
-    public void resume()
-    {
+    public void resume() {
         this.kview.resume();
     }
 
-    public KenBurnsView getKVView(){
+    public KenBurnsView getKVView() {
         return this.kview;
-    };
+    }
+
 }
